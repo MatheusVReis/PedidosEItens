@@ -22,9 +22,7 @@ namespace ExercicioFixacao
             Console.Write("Status: ");
             OrderStatus orderData = Enum.Parse<OrderStatus>(Console.ReadLine());
 
-            //OrderItem oI = new OrderItem();
-            Order order = new Order(orderData);
-            order.Moment = DateTime.Now;
+            Order order = new Order(DateTime.Now, orderData, client);
 
             Console.Write("How many items to this order? ");
             int n = int.Parse(Console.ReadLine());
@@ -45,10 +43,7 @@ namespace ExercicioFixacao
             }
             Console.WriteLine();
             Console.WriteLine("ORDER SUMMARY:");
-            Console.WriteLine("Order momente: " + order.Moment);
-            Console.WriteLine("Order status: " + order.Status);
-            Console.WriteLine("Client: " + client.ToString());
-            Console.WriteLine("Order items: ");            
+            Console.WriteLine(order);
         }
     }
 }

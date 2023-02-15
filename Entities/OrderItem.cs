@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Globalization;
+using System;
 using System.Text;
 
 namespace ExercicioFixacao.Entities
@@ -27,15 +28,13 @@ namespace ExercicioFixacao.Entities
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Product.Name);
-            sb.Append(", $");
-            sb.Append(Product.Price.ToString());
-            sb.Append(", Quantity: ");
-            sb.Append(Quantity);
-            sb.Append(", Subtotal: $");
-            sb.Append(SubTotal());
-            return sb.ToString();
+            return Product.Name
+                + ", $"
+                + Price.ToString("F2", CultureInfo.InvariantCulture)
+                + ", Quantity: "
+                + Quantity
+                + ", Subtotal: $"
+                + SubTotal().ToString("F2", CultureInfo.InvariantCulture);
         }
     }
 }
