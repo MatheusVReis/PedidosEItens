@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ExercicioFixacao.Entities
 {
@@ -17,6 +18,17 @@ namespace ExercicioFixacao.Entities
             Name = name;
             Email = email;
             Date = date;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Name);
+            sb.Append(" ");
+            sb.Append(Date.ToString("dd/MM/yyyy"));
+            sb.Append(" - ");
+            sb.AppendLine(Email);
+            return sb.ToString();
         }
     }
 }

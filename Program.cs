@@ -16,13 +16,39 @@ namespace ExercicioFixacao
             Console.Write("Birth date (DD/MM/YYYY): ");
             DateTime birthDate = DateTime.Parse(Console.ReadLine());
 
-            Client client = new Client(name, email, birthDate);
+            Client client = new Client(name, email, birthDate);            
 
             Console.WriteLine("Enter order data: ");
+            Console.Write("Status: ");
             OrderStatus orderData = Enum.Parse<OrderStatus>(Console.ReadLine());
-            Console.WriteLine("How many items to this order? ");
+
+            //OrderItem oI = new OrderItem();
+            Order order = new Order(orderData);
+            order.Moment = DateTime.Now;
+
+            Console.Write("How many items to this order? ");
             int n = int.Parse(Console.ReadLine());
 
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"Enter #{i} item data: ");
+                Console.Write("Product name: ");
+                string productName = Console.ReadLine();
+                Console.Write("Product price: ");
+                double productPrice = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                Console.Write("Quantity: ");
+                int quantity = int.Parse(Console.ReadLine());
+
+                Product product = new Product(productName, productPrice);
+                OrderItem orderItem = new OrderItem(quantity, productPrice, product);                
+                order.AddItem(orderItem);
+            }
+            Console.WriteLine();
+            Console.WriteLine("ORDER SUMMARY:");
+            Console.WriteLine("Order momente: " + order.Moment);
+            Console.WriteLine("Order status: " + order.Status);
+            Console.WriteLine("Client: " + client.ToString());
+            Console.WriteLine("Order items: ");            
         }
     }
 }

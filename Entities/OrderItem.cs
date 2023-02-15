@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ExercicioFixacao.Entities
 {
@@ -22,6 +23,19 @@ namespace ExercicioFixacao.Entities
         public double SubTotal()
         {
             return Quantity * Price;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Product.Name);
+            sb.Append(", $");
+            sb.Append(Product.Price.ToString());
+            sb.Append(", Quantity: ");
+            sb.Append(Quantity);
+            sb.Append(", Subtotal: $");
+            sb.Append(SubTotal());
+            return sb.ToString();
         }
     }
 }

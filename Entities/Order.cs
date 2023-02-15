@@ -32,5 +32,9 @@ namespace ExercicioFixacao.Entities
         {
             Items.Remove(item);
         }
+        public double Total(OrderItem item)
+        {
+            return item.SubTotal();
+        }
     }
 }
